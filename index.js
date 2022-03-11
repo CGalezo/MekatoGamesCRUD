@@ -1,6 +1,15 @@
 const Server = require('./config/server');
 const { images_2d } = require('./data');
 const characters = require('./models/characters')
+const characterStats = require('./models/characterStats')
+const images2d = require('./models/images2d')
+const item = require('./models/item')
+const missionObjectives = require('./models/missionObjectives')
+const missions = require('./models/missions')
+const models3d = require('./models/models3d')
+const playerCharacter = require('./models/playerCharacter')
+const player = require('./models/player')
+
 
 const server = new Server();
 

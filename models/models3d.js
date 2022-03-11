@@ -3,12 +3,11 @@ const {Router, Require, Response } = require('express') ;
 const data = require('../data.js');
 
 app = express.Router();
-
+const models3d = data["models_3d"];
 
 //Get All Models3d
 app.get('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    const models3d = data["models_3d"];
     res.status(200).json({message: 'Success', models3d})
 
 });
