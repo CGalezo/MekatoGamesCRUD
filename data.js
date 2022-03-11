@@ -1,6 +1,14 @@
 const data = {
     message: "THE data",
-    characters: [],
+    characters: [
+        {
+            name: 'Camilo',
+            stats: 'Programming',
+            level: 70,
+            title: 'Mago de Programacion',
+            model: '0001'
+        }
+    ],
     missions: [],
     models_3d: [],
     players: [],
@@ -11,4 +19,4 @@ const data = {
     items: []
 }
 
-export default data
+module.exports = data
