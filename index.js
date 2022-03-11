@@ -15,11 +15,11 @@ const server = new Server();
 
 //Server Routes
 server.app.use('/characters', characters);
-server.app.use('/characterStats', characterStats);
-server.app.use('/images2d', images_2d);
+//server.app.use('/characterStats', characterStats);
+//server.app.use('/images2d', images_2d);
 server.app.use('/items', items);
-server.app.use('/missionObjectives', missionObjectives);
-server.app.use('/missions', missions);
+//server.app.use('/missionObjectives', missionObjectives);
+//server.app.use('/missions', missions);
 server.app.use('/models3d', models3d);
 server.app.use('/playerCharacter', playerCharacter);
 server.app.use('/players', players);

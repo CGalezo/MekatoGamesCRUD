@@ -1,47 +1,58 @@
-//Get All Users
-app.get('/usuarios',async (req, res) => {
-    res.setHeader("Content-Type", "application/json");
-    res.status(200).json({message: 'Success', dataU})
+const express = require('express');
+const {Router, Require, Response } = require('express') ;
+const {data} = require('../data.js');
+const items = data['items']
 
+app = express.Router();
+
+//Get All Items
+app.get('/',async (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).json({message: 'Success', items})
 });
 
-//Create a User
-app.post('/usuarios',async (req, res) => {
-    //New user
-    const { name, username } = req.body
-    const id = idGenerator();
+//Create a Items
+app.post('/',async (req, res) => {
+    //New Items
+    const { name, level, description, image, sellPrice } = req.body
+    const id = idGenerator('items');
 
-    if(name != undefined && price != undefined) {
+    if(name == undefined || level == undefined || description == undefined || image == undefined || sellPrice == undefined ) {
         res.setHeader("Content-Type", "application/json");
-        res.status(400).json({message: 'ERROR'});
+        res.status(400).json({message: 'ERROR CREATE'});
         return;
     }
 
-    dataU.users.push({
+    items.push({
         id: id,
-        username: username,
-        name: name
+        level: level,
+        description: description,
+        image: image,
+        sellPrice: sellPrice
     });
 
     res.setHeader("Content-Type", "application/json");
-    res.status(201).json({message: 'Success', id});
+    res.status(201).json({message: 'Create Success', id});
 
 });
 
-//Update a Product
-app.put('/productos',async (req, res) => {
-    const { name, price, id } = req.body;
+//Update a items
+app.put('/',async (req, res) => {
+    const { name, level, description, image, sellPrice, id } = req.body
 
-    if(id != undefined && name != undefined && price != undefined) {
+    if(name == undefined || level == undefined || description == undefined || image == undefined || sellPrice == undefined || id == undefined ) {
         res.setHeader("Content-Type", "application/json");
-        res.status(400).json({message: 'ERROR'});
+        res.status(400).json({message: 'ERROR CREATE'});
         return;
     }
 
-    dataU.users.forEach(element => {
+    items.forEach(element => {
         if(element.id == id) {
             element.name = name,
-            element.price = price
+            element.level = level,
+            element.description = description,
+            element.image = image,
+            element.sellPrice = sellPrice
         }   
     }); 
 
@@ -50,8 +61,8 @@ app.put('/productos',async (req, res) => {
 
 });
 
-//Delete a User
-app.delete('/usuarios',async (req, res) => {
+//Delete a Item
+app.delete('/',async (req, res) => {
     const { id } = req.body;
 
     if(id != undefined ) {
@@ -60,9 +71,10 @@ app.delete('/usuarios',async (req, res) => {
         return;
     }
 
-    dataU.users = arrayRemove(dataU.users, id) 
+    items = arrayRemove(items, id) 
 
     res.setHeader("Content-Type", "application/json");
     res.status(201).json({message: 'Delete Successfull', id});
 });
 
+module.exports = app;
