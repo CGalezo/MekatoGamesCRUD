@@ -1,12 +1,15 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const {data} = require('../data.js');
-const items = data['items']
+const {data} = require('../resources/data.js');
+const {idGenerator, arrayRemove} = require('../util/functions');
+
+
 
 app = express.Router();
 
 //Get All Items
 app.get('/',async (req, res) => {
+    const items = data["items"];
     res.setHeader("Content-Type", "application/json");
     res.status(200).json({message: 'Success', items})
 });

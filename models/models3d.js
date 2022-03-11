@@ -1,6 +1,6 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const data = require('../data.js');
+const {data} = require('../resources/data.js');
 
 app = express.Router();
 const models3d = data["models_3d"];

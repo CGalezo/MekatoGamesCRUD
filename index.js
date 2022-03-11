@@ -1,5 +1,5 @@
 const Server = require('./config/server');
-const { images_2d } = require('./data');
+const { images_2d } = require('./resources/data');
 const characters = require('./models/characters')
 const characterStats = require('./models/characterStats')
 const images2d = require('./models/images2d')

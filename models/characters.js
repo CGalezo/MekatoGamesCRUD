@@ -1,6 +1,7 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const {data, idGenerator} = require('../data.js');
+const {data, idGenerator} = require('../resources/data.js');
+const {idGenerator, arrayRemove} = require('../util/functions');
 
 
 app = express.Router();
