@@ -1,12 +1,14 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const {data} = require('../resources/data.js');
+const data = require('../resources/data');
+const {idGenerator, arrayRemove} = require('../util/functions');
 
 app = express.Router();
-const models3d = data["models_3d"];
+app.use(express.json());
 
 //Get All Models3d
 app.get('/',async (req, res) => {
+    const models3d = data["models_3d"];
     res.setHeader("Content-Type", "application/json");
     res.status(200).json({message: 'Success', models3d})
 

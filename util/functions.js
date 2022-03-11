@@ -1,4 +1,4 @@
-const {data} = require('../resources/data.js');
+const data = require('../resources/data.js');
 
 function idGenerator(model){
 
@@ -23,4 +23,4 @@ function arrayRemove(arr, value) {
 
 }
 
-module.exports = {arrayRemove, idGenerator}
+module.exports = {arrayRemove, idGenerator};

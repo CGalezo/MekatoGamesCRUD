@@ -13,6 +13,7 @@ const players = require('./models/players')
 
 const server = new Server();
 
+
 //Server Routes
 server.app.use('/characters', characters);
 //server.app.use('/characterStats', characterStats);

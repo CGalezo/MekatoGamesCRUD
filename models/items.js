@@ -1,11 +1,11 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const {data} = require('../resources/data.js');
+const data = require('../resources/data');
 const {idGenerator, arrayRemove} = require('../util/functions');
 
-
-
 app = express.Router();
+app.use(express.json());
+
 
 //Get All Items
 app.get('/',async (req, res) => {
