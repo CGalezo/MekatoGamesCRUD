@@ -15,19 +15,24 @@ app.get('/',async (req, res) => {
 //Create a User
 app.post('/',async (req, res) => {
     //New user
-    const { name, username } = req.body
-    const id = idGenerator();
 
-    if(name != undefined && price != undefined) {
+    const characters = data["characters"];
+
+    const {name, stats, level, title, model } = req.body
+    const id = idGenerator();
+    if(name === undefined || stats === undefined || level === undefined || title === undefined || model === undefined) {
         res.setHeader("Content-Type", "application/json");
         res.status(400).json({message: 'ERROR'});
         return;
     }
 
-    dataU.users.push({
+    data.characters.push({
         id: id,
-        username: username,
-        name: name
+        name: name,
+        stats: stats,
+        level: level,
+        title: title,
+        model: model
     });
 
     res.setHeader("Content-Type", "application/json");
@@ -37,18 +42,21 @@ app.post('/',async (req, res) => {
 
 //Update a Product
 app.put('/',async (req, res) => {
-    const { name, price, id } = req.body;
+    const {id, name, stats, level, title, model } = req.body
 
-    if(id != undefined && name != undefined && price != undefined) {
+    if(id === undefined || name === undefined || stats === undefined || level === undefined || title === undefined || model === undefined) {
         res.setHeader("Content-Type", "application/json");
         res.status(400).json({message: 'ERROR'});
         return;
     }
 
-    dataU.users.forEach(element => {
+    data.characters.forEach(element => {
         if(element.id == id) {
             element.name = name,
-            element.price = price
+            element.stats = stats
+            element.level = level
+            element.title = title
+            element.model = model
         }   
     }); 
 
@@ -59,15 +67,15 @@ app.put('/',async (req, res) => {
 
 //Delete a User
 app.delete('/',async (req, res) => {
-    const { id } = req.body;
+    const {id, name, stats, level, title, model } = req.body
 
-    if(id != undefined ) {
+    if(id === undefined || name === undefined || stats === undefined || level === undefined || title === undefined || model === undefined) {
         res.setHeader("Content-Type", "application/json");
         res.status(400).json({message: 'ERROR'});
         return;
     }
 
-    dataU.users = arrayRemove(dataU.users, id) 
+    data.characters = arrayRemove(data.characters, id) 
 
     res.setHeader("Content-Type", "application/json");
     res.status(201).json({message: 'Delete Successfull', id});
