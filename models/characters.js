@@ -1,5 +1,5 @@
 const express = require('express');
-const {Router, req, res } = require('express') ;
+const {Router, Require, Response } = require('express') ;
 const data = require('../data.js');
 
 app = express.Router();
