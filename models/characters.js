@@ -1,6 +1,7 @@
 const express = require('express');
 const {Router, Require, Response } = require('express') ;
-const data = require('../data.js');
+const {data, idGenerator} = require('../data.js');
+
 
 app = express.Router();
 
@@ -19,7 +20,7 @@ app.post('/',async (req, res) => {
     const characters = data["characters"];
 
     const {name, stats, level, title, model } = req.body
-    const id = idGenerator();
+    const id = idGenerator('character');
     if(name === undefined || stats === undefined || level === undefined || title === undefined || model === undefined) {
         res.setHeader("Content-Type", "application/json");
         res.status(400).json({message: 'ERROR'});

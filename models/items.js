@@ -6,13 +6,13 @@ const items = data['items']
 app = express.Router();
 
 //Get All Items
-app.get('/items',async (req, res) => {
+app.get('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.status(200).json({message: 'Success', items})
 });
 
 //Create a Items
-app.post('/items',async (req, res) => {
+app.post('/',async (req, res) => {
     //New Items
     const { name, level, description, image, sellPrice } = req.body
     const id = idGenerator('items');
@@ -37,7 +37,7 @@ app.post('/items',async (req, res) => {
 });
 
 //Update a items
-app.put('/items',async (req, res) => {
+app.put('/',async (req, res) => {
     const { name, level, description, image, sellPrice, id } = req.body
 
     if(name == undefined || level == undefined || description == undefined || image == undefined || sellPrice == undefined || id == undefined ) {
@@ -62,7 +62,7 @@ app.put('/items',async (req, res) => {
 });
 
 //Delete a Item
-app.delete('/items',async (req, res) => {
+app.delete('/',async (req, res) => {
     const { id } = req.body;
 
     if(id != undefined ) {
