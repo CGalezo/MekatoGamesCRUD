@@ -1,8 +1,15 @@
+const express = require('express');
+const {Router, Require, Response } = require('express') ;
+const data = require('../data.js');
+
+app = express.Router();
+
 
 //Get All Models3d
 app.get('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
-    res.status(200).json({message: 'Success', data})
+    const models3d = data["models_3d"];
+    res.status(200).json({message: 'Success', models3d})
 
 });
 
@@ -63,3 +70,5 @@ app.delete('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.status(201).json({message: 'Delete Successfull', id});
 });
+
+module.exports = app;

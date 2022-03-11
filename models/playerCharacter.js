@@ -1,3 +1,9 @@
+const express = require('express');
+const {Router, Require, Response } = require('express') ;
+const data = require('../data.js');
+
+app = express.Router();
+
 //Get All playerCharacter
 app.get('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
@@ -62,3 +68,5 @@ app.delete('/',async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.status(201).json({message: 'Delete Successfull', id});
 });
+
+module.exports = app;
